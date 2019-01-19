@@ -85,29 +85,59 @@ class OutboundPackage
     public $traceId;
 
     /**
-     * @param string                          $payload
-     * @param array<string, string|int|float> $headers
-     * @param DeliveryDestination             $destination
-     * @param string|int                      $traceId
+     * @param string              $payload
+     * @param array               $headers
+     * @param DeliveryDestination $destination
+     * @param                     $traceId
+     * @param bool                $persist
+     * @param bool                $mandatory
+     * @param bool                $immediate
+     * @param int|null            $expiredAfter
      *
      * @return static
      */
-    public static function create(string $payload, array $headers, DeliveryDestination $destination, $traceId): self
+    public static function create(
+        string $payload,
+        array $headers,
+        DeliveryDestination $destination,
+        $traceId,
+        bool $persist = false,
+        bool $mandatory = false,
+        bool $immediate = false,
+        ?int $expiredAfter = null
+    ): self
     {
-        return new static($payload, $headers, $destination, $traceId);
+        return new static($payload, $headers, $destination, $traceId, $persist, $mandatory, $immediate, $expiredAfter);
     }
 
     /**
-     * @param string                          $payload
-     * @param array<string, string|int|float> $headers
-     * @param DeliveryDestination             $destination
-     * @param string|int                      $traceId
+     * @param string              $payload
+     * @param array               $headers
+     * @param DeliveryDestination $destination
+     * @param                     $traceId
+     * @param bool                $persist
+     * @param bool                $mandatory
+     * @param bool                $immediate
+     * @param int|null            $expiredAfter
      */
-    private function __construct(string $payload, array $headers, DeliveryDestination $destination, $traceId)
+    private function __construct(
+        string $payload,
+        array $headers,
+        DeliveryDestination $destination,
+        $traceId,
+        bool $persist = false,
+        bool $mandatory = false,
+        bool $immediate = false,
+        ?int $expiredAfter = null
+    )
     {
-        $this->payload     = $payload;
-        $this->headers     = $headers;
-        $this->destination = $destination;
-        $this->traceId     = $traceId;
+        $this->payload        = $payload;
+        $this->headers        = $headers;
+        $this->destination    = $destination;
+        $this->traceId        = $traceId;
+        $this->persistentFlag = $persist;
+        $this->mandatoryFlag  = $mandatory;
+        $this->immediateFlag  = $immediate;
+        $this->expiredAfter   = $expiredAfter;
     }
 }
