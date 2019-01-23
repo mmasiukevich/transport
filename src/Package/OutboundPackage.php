@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHP Service Bus (publish-subscribe pattern) transport common parts
+ * PHP Service Bus transport common parts
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -17,14 +17,14 @@ use ServiceBus\Transport\Common\DeliveryDestination;
 /**
  * Outbound package
  *
- * @property-read string              $payload
- * @property-read array               $headers
- * @property-read DeliveryDestination $destination
- * @property-read bool                $persistentFlag
- * @property-read bool                $mandatoryFlag
- * @property-read bool                $immediateFlag
- * @property-read int|null            $expiredAfter
- * @property-read string|int          $traceId
+ * @property-read string                          $payload
+ * @property-read array<string, string|int|float> $headers
+ * @property-read DeliveryDestination             $destination
+ * @property-read bool                            $persistentFlag
+ * @property-read bool                            $mandatoryFlag
+ * @property-read bool                            $immediateFlag
+ * @property-read int|null                        $expiredAfter
+ * @property-read string|int                      $traceId
  */
 class OutboundPackage
 {
@@ -80,19 +80,19 @@ class OutboundPackage
     /**
      * Trace operation id
      *
-     * @var string
+     * @var string|int
      */
     public $traceId;
 
     /**
-     * @param string              $payload
-     * @param array               $headers
-     * @param DeliveryDestination $destination
-     * @param                     $traceId
-     * @param bool                $persist
-     * @param bool                $mandatory
-     * @param bool                $immediate
-     * @param int|null            $expiredAfter
+     * @param string                          $payload
+     * @param array<string, string|int|float> $headers
+     * @param DeliveryDestination             $destination
+     * @param string|int                      $traceId
+     * @param bool                            $persist
+     * @param bool                            $mandatory
+     * @param bool                            $immediate
+     * @param int|null                        $expiredAfter
      *
      * @return static
      */
@@ -111,14 +111,14 @@ class OutboundPackage
     }
 
     /**
-     * @param string              $payload
-     * @param array               $headers
-     * @param DeliveryDestination $destination
-     * @param                     $traceId
-     * @param bool                $persist
-     * @param bool                $mandatory
-     * @param bool                $immediate
-     * @param int|null            $expiredAfter
+     * @param string                          $payload
+     * @param array<string, string|int|float> $headers
+     * @param DeliveryDestination             $destination
+     * @param string|int                      $traceId
+     * @param bool                            $persist
+     * @param bool                            $mandatory
+     * @param bool                            $immediate
+     * @param int|null                        $expiredAfter
      */
     private function __construct(
         string $payload,

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHP Service Bus (publish-subscribe pattern) transport common parts
+ * PHP Service Bus transport common parts
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -18,7 +18,7 @@ namespace ServiceBus\Transport\Common\InMemory;
 final class InMemoryMessageBus
 {
     /**
-     * @var self
+     * @var self|null
      */
     private static $instance;
 
@@ -76,6 +76,9 @@ final class InMemoryMessageBus
 
     private function __construct()
     {
-        $this->messages = new \SplQueue();
+        /** @var \SplQueue<\ServiceBus\Transport\Common\InMemory\InMemoryIncomingPackage> $queue */
+        $queue = new \SplQueue();
+
+        $this->messages = $queue;
     }
 }

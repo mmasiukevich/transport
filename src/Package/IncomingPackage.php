@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHP Service Bus (publish-subscribe pattern) transport common parts
+ * PHP Service Bus transport common parts
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -16,7 +16,7 @@ use Amp\Promise;
 use ServiceBus\Transport\Common\DeliveryDestination;
 
 /**
- * Incoming packet
+ * Incoming package
  */
 interface IncomingPackage
 {
@@ -51,7 +51,7 @@ interface IncomingPackage
     /**
      * Receive message headers bag
      *
-     * @return array<string, string>
+     * @return array<string, string|int|float>
      */
     public function headers(): array;
 

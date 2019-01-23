@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHP Service Bus (publish-subscribe pattern) transport common parts
+ * PHP Service Bus transport common parts
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -66,7 +66,7 @@ final class InMemoryTransport implements Transport
 
         /** @psalm-suppress InvalidArgument Incorrect psalm unpack parameters (...$args) */
         return call(
-            function() use ($emitter)
+            function() use ($emitter): \Generator
             {
                 if(true === InMemoryMessageBus::instance()->has())
                 {

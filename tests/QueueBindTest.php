@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHP Service Bus (publish-subscribe pattern) transport common parts
+ * PHP Service Bus transport common parts
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -9,7 +9,6 @@
  */
 
 declare(strict_types = 1);
-
 
 namespace ServiceBus\Transport\Common\QueueBindTest;
 

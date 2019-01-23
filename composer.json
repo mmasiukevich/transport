@@ -1,6 +1,6 @@
 {
   "name": "php-service-bus/transport-common",
-  "description": "PHP Service Bus (publish-subscribe pattern) transport common parts",
+  "description": "PHP Service Bus transport common parts",
   "type": "library",
   "keywords": ["cqrs", "event-sourcing", "async-php", "command-bus", "messaging"],
   "authors": [

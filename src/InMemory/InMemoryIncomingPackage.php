@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHP Service Bus (publish-subscribe pattern) transport common parts
+ * PHP Service Bus transport common parts
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -28,20 +28,19 @@ final class InMemoryIncomingPackage implements IncomingPackage
     private $payload;
 
     /**
-     * @var array<string, string>
+     * @var array<string, string|int|float>
      */
     private $headers;
 
     /**
-     * @param string                $payload
-     * @param array<string, string> $headers
+     * @param string                          $payload
+     * @param array<string, string|int|float> $headers
      */
     public function __construct(string $payload, array $headers)
     {
         $this->payload = $payload;
         $this->headers = $headers;
     }
-
 
     /**
      * @inheritDoc
