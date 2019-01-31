@@ -4,12 +4,4 @@
 
 ## What is it?
 
-A set of interfaces for the implementation of work with queue in [service-bus](https://github.com/php-service-bus/service-bus) framework
-
-Interfaces List:
-* [Queue](https://github.com/php-service-bus/transport-common/blob/master/src/Queue.php)
-* [Topic](https://github.com/php-service-bus/transport-common/blob/master/src/Topic.php)
-* [QueueBind](https://github.com/php-service-bus/transport-common/blob/master/src/QueueBind.php)
-* [TopicBind](https://github.com/php-service-bus/transport-common/blob/master/src/TopicBind.php)
-* [Transport](https://github.com/php-service-bus/transport-common/blob/master/src/Transport.php)
-* [IncomingPackage](https://github.com/php-service-bus/transport-common/blob/master/src/Package/IncomingPackage.php)
+A set of interfaces for the implementation of the service bus transport level

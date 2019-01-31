@@ -14,9 +14,11 @@
     </php>
 
     <testsuites>
-        <testsuite name="Service bus">
+
+        <testsuite name="PHP Service Bus transport common bus">
             <directory>./tests/</directory>
         </testsuite>
+
     </testsuites>
 
     <filter>

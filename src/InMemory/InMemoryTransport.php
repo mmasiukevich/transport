@@ -58,6 +58,8 @@ final class InMemoryTransport implements Transport
     }
 
     /**
+     * @psalm-suppress MixedTypeCoercion
+     *
      * @inheritDoc
      */
     public function consume(Queue $queue): Promise
