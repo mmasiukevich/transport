@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHP Service Bus transport common parts
+ * Common transport implementation interfaces
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT

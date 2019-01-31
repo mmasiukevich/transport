@@ -15,7 +15,7 @@
 
     <testsuites>
 
-        <testsuite name="PHP Service Bus transport common bus">
+        <testsuite name="Common transport implementation interfaces">
             <directory>./tests/</directory>
         </testsuite>
 

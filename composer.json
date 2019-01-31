@@ -1,6 +1,6 @@
 {
   "name": "php-service-bus/transport-common",
-  "description": "PHP Service Bus transport common",
+  "description": "Common transport implementation interfaces",
   "type": "library",
   "keywords": [
     "async-php",
