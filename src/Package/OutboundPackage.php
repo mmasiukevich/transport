@@ -24,7 +24,7 @@ use ServiceBus\Transport\Common\DeliveryDestination;
  * @property-read bool                            $mandatoryFlag
  * @property-read bool                            $immediateFlag
  * @property-read int|null                        $expiredAfter
- * @property-read string|int                      $traceId
+ * @property-read string|int|null                 $traceId
  */
 class OutboundPackage
 {
@@ -80,7 +80,7 @@ class OutboundPackage
     /**
      * Trace operation id
      *
-     * @var string|int
+     * @var string|int|null
      */
     public $traceId;
 
@@ -88,7 +88,7 @@ class OutboundPackage
      * @param string                          $payload
      * @param array<string, string|int|float> $headers
      * @param DeliveryDestination             $destination
-     * @param string|int                      $traceId
+     * @param string|int|null                 $traceId
      * @param bool                            $persist
      * @param bool                            $mandatory
      * @param bool                            $immediate
@@ -114,7 +114,7 @@ class OutboundPackage
      * @param string                          $payload
      * @param array<string, string|int|float> $headers
      * @param DeliveryDestination             $destination
-     * @param string|int                      $traceId
+     * @param string|int|null                 $traceId
      * @param bool                            $persist
      * @param bool                            $mandatory
      * @param bool                            $immediate
