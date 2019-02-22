@@ -83,7 +83,7 @@ final class InMemoryTransport implements Transport
     /**
      * @inheritDoc
      */
-    public function stop(Queue $queue): Promise
+    public function stop(): Promise
     {
         Loop::stop();
 

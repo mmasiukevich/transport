@@ -67,11 +67,9 @@ interface Transport
     /**
      * Stop subscription
      *
-     * @param Queue $queue
-     *
      * @return Promise It does not return any result
      */
-    public function stop(Queue $queue): Promise;
+    public function stop(): Promise;
 
     /**
      * Send message to broker
