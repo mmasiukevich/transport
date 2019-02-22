@@ -62,7 +62,7 @@ final class InMemoryTransport implements Transport
      *
      * @inheritDoc
      */
-    public function consume(Queue $queue): Promise
+    public function consume(Queue ...$queue): Promise
     {
         $emitter = new Emitter();
 

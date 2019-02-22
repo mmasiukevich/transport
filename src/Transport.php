@@ -20,7 +20,7 @@ use ServiceBus\Transport\Common\Package\OutboundPackage;
  */
 interface Transport
 {
-    public const SERVICE_BUS_TRACE_HEADER = 'X-SERVICE-BUS-TRACE-ID';
+    public const SERVICE_BUS_TRACE_HEADER      = 'X-SERVICE-BUS-TRACE-ID';
     public const SERVICE_BUS_SERIALIZER_HEADER = 'X-SERVICE-BUS-ENCODER';
 
     /**
@@ -56,13 +56,13 @@ interface Transport
     /**
      * Consume to queue
      *
-     * @param Queue $queue
+     * @param Queue ...$queues
      *
      * @return Promise<\Amp\Iterator<\ServiceBus\Transport\Common\Package\IncomingPackage>>
      *
      * @throws \ServiceBus\Transport\Common\Exceptions\ConnectionFail Connection refused
      */
-    public function consume(Queue $queue): Promise;
+    public function consume(Queue ... $queues): Promise;
 
     /**
      * Stop subscription
