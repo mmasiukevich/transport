@@ -42,7 +42,7 @@ class QueueBind
      */
     final public static function create(Topic $destinationTopic, ?string $routingKey = null): self
     {
-        return new static($destinationTopic, $routingKey);
+        return new self($destinationTopic, $routingKey);
     }
 
     /**

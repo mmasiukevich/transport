@@ -107,7 +107,7 @@ class OutboundPackage
         ?int $expiredAfter = null
     ): self
     {
-        return new static($payload, $headers, $destination, $traceId, $persist, $mandatory, $immediate, $expiredAfter);
+        return new self($payload, $headers, $destination, $traceId, $persist, $mandatory, $immediate, $expiredAfter);
     }
 
     /**
