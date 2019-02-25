@@ -17,5 +17,21 @@ namespace ServiceBus\Transport\Common\Exceptions;
  */
 final class InvalidConnectionParameters extends \InvalidArgumentException implements TransportFail
 {
+    /**
+     * @return self
+     */
+    public static function emptyDSN(): self
+    {
+        return new self('Connection DSN can\'t be empty');
+    }
 
+    /**
+     * @param string $dsn
+     *
+     * @return self
+     */
+    public static function incorrectDSN(string $dsn): self
+    {
+        return new self(\sprintf('Can\'t parse specified connection DSN (%s)', $dsn));
+    }
 }
