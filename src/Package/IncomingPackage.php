@@ -51,7 +51,8 @@ interface IncomingPackage
     /**
      * Receive message headers bag
      *
-     * @return array<string, string|int|float>
+     * @psalm-return array<string, string|int|float>
+     * @return array
      */
     public function headers(): array;
 

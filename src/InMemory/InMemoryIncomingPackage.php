@@ -28,13 +28,16 @@ final class InMemoryIncomingPackage implements IncomingPackage
     private $payload;
 
     /**
-     * @var array<string, string|int|float>
+     * @psalm-var array<string, string|int|float>
+     * @var array
      */
     private $headers;
 
     /**
-     * @param string                          $payload
-     * @param array<string, string|int|float> $headers
+     * @psalm-param array<string, string|int|float> $headers
+     *
+     * @param string $payload
+     * @param array  $headers
      */
     public function __construct(string $payload, array $headers)
     {

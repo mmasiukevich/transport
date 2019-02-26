@@ -23,7 +23,8 @@ final class InMemoryMessageBus
     private static $instance;
 
     /**
-     * @var \SplQueue<\ServiceBus\Transport\Common\InMemory\InMemoryIncomingPackage>
+     * @psalm-var \SplQueue<\ServiceBus\Transport\Common\InMemory\InMemoryIncomingPackage>
+     * @var \SplQueue
      */
     private $messages;
 
@@ -76,9 +77,7 @@ final class InMemoryMessageBus
 
     private function __construct()
     {
-        /** @var \SplQueue<\ServiceBus\Transport\Common\InMemory\InMemoryIncomingPackage> $queue */
-        $queue = new \SplQueue();
-
-        $this->messages = $queue;
+        /** @psalm-suppress MixedTypeCoercion */
+        $this->messages = new \SplQueue();
     }
 }
