@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Common transport implementation interfaces
+ * Common transport implementation interfaces.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -13,12 +13,12 @@ declare(strict_types = 1);
 namespace ServiceBus\Transport\Common;
 
 /**
- * Topic interface
+ * Topic interface.
  */
 interface Topic
 {
     /**
-     * Return topic name
+     * Return topic name.
      *
      * @return string
      */

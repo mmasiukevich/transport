@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Common transport implementation interfaces
+ * Common transport implementation interfaces.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -14,6 +14,8 @@ namespace ServiceBus\Transport\Common\InMemory;
 
 /**
  * @internal
+ * For tests only
+ * @codeCoverageIgnore
  */
 final class InMemoryMessageBus
 {
@@ -24,6 +26,7 @@ final class InMemoryMessageBus
 
     /**
      * @psalm-var \SplQueue<\ServiceBus\Transport\Common\InMemory\InMemoryIncomingPackage>
+     *
      * @var \SplQueue
      */
     private $messages;
@@ -33,7 +36,7 @@ final class InMemoryMessageBus
      */
     public static function instance(): InMemoryMessageBus
     {
-        if(null === self::$instance)
+        if (null === self::$instance)
         {
             self::$instance = new self();
         }
@@ -72,7 +75,6 @@ final class InMemoryMessageBus
 
     private function __clone()
     {
-
     }
 
     private function __construct()

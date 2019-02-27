@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Common transport implementation interfaces
+ * Common transport implementation interfaces.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -13,7 +13,7 @@ declare(strict_types = 1);
 namespace ServiceBus\Transport\Common;
 
 /**
- * Binding the topic to the topic
+ * Binding the topic to the topic.
  *
  * @property-read Topic       $destinationTopic
  * @property-read string|null $routingKey
@@ -21,14 +21,14 @@ namespace ServiceBus\Transport\Common;
 class TopicBind
 {
     /**
-     * The topic to which the binding is going
+     * The topic to which the binding is going.
      *
      * @var Topic
      */
     public $destinationTopic;
 
     /**
-     * Binding Key
+     * Binding Key.
      *
      * @var string|null
      */

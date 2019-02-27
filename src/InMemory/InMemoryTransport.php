@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Common transport implementation interfaces
+ * Common transport implementation interfaces.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -25,9 +25,11 @@ use ServiceBus\Transport\Common\TopicBind;
 use ServiceBus\Transport\Common\Transport;
 
 /**
- * In memory transport implementation
+ * In memory transport implementation.
  *
  * For tests only
+ *
+ * @codeCoverageIgnore
  */
 final class InMemoryTransport implements Transport
 {
@@ -42,7 +44,7 @@ final class InMemoryTransport implements Transport
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function createTopic(Topic $topic, TopicBind ...$binds): Promise
     {
@@ -50,7 +52,7 @@ final class InMemoryTransport implements Transport
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function createQueue(Queue $queue, QueueBind ...$binds): Promise
     {
@@ -60,7 +62,7 @@ final class InMemoryTransport implements Transport
     /**
      * @psalm-suppress MixedTypeCoercion
      *
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function consume(Queue ...$queue): Promise
     {
@@ -70,7 +72,7 @@ final class InMemoryTransport implements Transport
         return call(
             function() use ($emitter): \Generator
             {
-                if(true === InMemoryMessageBus::instance()->has())
+                if (true === InMemoryMessageBus::instance()->has())
                 {
                     yield $emitter->emit(InMemoryMessageBus::instance()->extract());
                 }
@@ -81,7 +83,7 @@ final class InMemoryTransport implements Transport
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function stop(): Promise
     {
@@ -91,7 +93,7 @@ final class InMemoryTransport implements Transport
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function send(OutboundPackage $outboundPackage): Promise
     {
@@ -99,7 +101,7 @@ final class InMemoryTransport implements Transport
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function connect(): Promise
     {
@@ -107,7 +109,7 @@ final class InMemoryTransport implements Transport
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function disconnect(): Promise
     {

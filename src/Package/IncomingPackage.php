@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Common transport implementation interfaces
+ * Common transport implementation interfaces.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -16,83 +16,84 @@ use Amp\Promise;
 use ServiceBus\Transport\Common\DeliveryDestination;
 
 /**
- * Incoming package
+ * Incoming package.
  */
 interface IncomingPackage
 {
     /**
-     * Receive package id
+     * Receive package id.
      *
      * @return string
      */
     public function id(): string;
 
     /**
-     * Receive Unix timestamp with microseconds (the time the message was received)
+     * Receive Unix timestamp with microseconds (the time the message was received).
      *
      * @return float
      */
     public function time(): float;
 
     /**
-     * The source from which the message was received
+     * The source from which the message was received.
      *
      * @return DeliveryDestination
      */
     public function origin(): DeliveryDestination;
 
     /**
-     * Receive message body
+     * Receive message body.
      *
      * @return string
      */
     public function payload(): string;
 
     /**
-     * Receive message headers bag
+     * Receive message headers bag.
      *
      * @psalm-return array<string, string|int|float>
+     *
      * @return array
      */
     public function headers(): array;
 
     /**
-     * Acks given message
-     *
-     * @return Promise It does not return any result
+     * Acks given message.
      *
      * @throws \ServiceBus\Transport\Common\Exceptions\AcknowledgeFailed
+     *
+     * @return Promise It does not return any result
      */
     public function ack(): Promise;
 
     /**
-     * Nacks message
+     * Nacks message.
      *
      * @param bool        $requeue    Send back to the queue
-     * @param null|string $withReason Reason for refusal
-     *
-     * @return Promise It does not return any result
+     * @param string|null $withReason Reason for refusal
      *
      * @throws \ServiceBus\Transport\Common\Exceptions\NotAcknowledgeFailed
+     *
+     * @return Promise It does not return any result
      */
     public function nack(bool $requeue, ?string $withReason = null): Promise;
 
     /**
-     * Rejects message
+     * Rejects message.
      *
      * @param bool        $requeue    Send back to the queue
-     * @param null|string $withReason Reason for refusal
-     *
-     * @return Promise It does not return any result
+     * @param string|null $withReason Reason for refusal
      *
      * @throws \ServiceBus\Transport\Common\Exceptions\RejectFailed
+     *
+     * @return Promise It does not return any result
      */
     public function reject(bool $requeue, ?string $withReason = null): Promise;
 
     /**
-     * Receive trace id
+     * Receive trace id.
      *
-     * @return string|int
+     * @return int|string
      */
     public function traceId();
 }

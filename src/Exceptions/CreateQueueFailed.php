@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Common transport implementation interfaces
+ * Common transport implementation interfaces.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -13,11 +13,13 @@ declare(strict_types = 1);
 namespace ServiceBus\Transport\Common\Exceptions;
 
 /**
- * Error creating queue
+ * Error creating queue.
  */
 final class CreateQueueFailed extends \RuntimeException implements TransportFail
 {
     /**
+     * @codeCoverageIgnore
+     *
      * @param \Throwable $throwable
      *
      * @return self

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Common transport implementation interfaces
+ * Common transport implementation interfaces.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -24,13 +24,13 @@ final class TopicBindTest extends TestCase
     /**
      * @test
      *
-     * @return void
-     *
      * @throws \Throwable
+     *
+     * @return void
      */
     public function create(): void
     {
-        $topic = new class implements Topic
+        $topic = new class() implements Topic
         {
             public function __toString(): string
             {
@@ -40,7 +40,7 @@ final class TopicBindTest extends TestCase
 
         $bind = TopicBind::create($topic, 'key');
 
-        static::assertEquals('qwerty', (string) $bind->destinationTopic);
-        static::assertEquals('key', $bind->routingKey);
+        static::assertSame('qwerty', (string) $bind->destinationTopic);
+        static::assertSame('key', $bind->routingKey);
     }
 }

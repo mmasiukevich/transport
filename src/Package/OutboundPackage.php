@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Common transport implementation interfaces
+ * Common transport implementation interfaces.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -15,84 +15,92 @@ namespace ServiceBus\Transport\Common\Package;
 use ServiceBus\Transport\Common\DeliveryDestination;
 
 /**
- * Outbound package
+ * Outbound package.
  *
- * @property-read string                          $payload
- * @property-read array<string, string|int|float> $headers
- * @property-read DeliveryDestination             $destination
- * @property-read bool                            $persistentFlag
- * @property-read bool                            $mandatoryFlag
- * @property-read bool                            $immediateFlag
- * @property-read int|null                        $expiredAfter
- * @property-read string|int|null                 $traceId
+ * @property-read string              $payload
+ * @property-read array               $headers
+ * @property-read DeliveryDestination $destination
+ * @property-read bool                $persistentFlag
+ * @property-read bool                $mandatoryFlag
+ * @property-read bool                $immediateFlag
+ * @property-read int|null            $expiredAfter
+ * @property-read int|string|null     $traceId
  */
 class OutboundPackage
 {
     /**
-     * Message body
+     * Message body.
      *
      * @var string
      */
     public $payload;
 
     /**
-     * Message headers
+     * Message headers.
      *
-     * @var array<string, string|int|float>
+     * @psalm-var array<string, float|int|string>
+     *
+     * @var array
      */
     public $headers;
 
     /**
-     * Message destination
+     * Message destination.
      *
      * @var DeliveryDestination
      */
     public $destination;
 
     /**
-     * The message must be stored in the broker
+     * The message must be stored in the broker.
      *
      * @var bool
      */
     public $persistentFlag = false;
 
     /**
-     * The message must be sent to the existing recipient
+     * This flag tells the server how to react if the message cannot be routed to a queue. If this flag is set, the
+     * server will return an unroutable message with a Return method. If this flag is zero, the server silently drops
+     * the message.
      *
      * @var bool
      */
     public $mandatoryFlag = false;
 
     /**
-     * The message will be sent with the highest priority
+     * This flag tells the server how to react if the message cannot be routed to a queue consumer immediately. If this
+     * flag is set, the server will return an undeliverable message with a Return method. If this flag is zero, the
+     * server will queue the message, but with no guarantee that it will ever be consumed.
      *
      * @var bool
      */
     public $immediateFlag = false;
 
     /**
-     * The message will be marked expired after N milliseconds
+     * The message will be marked expired after N milliseconds.
      *
      * @var int|null
      */
     public $expiredAfter;
 
     /**
-     * Trace operation id
+     * Trace operation id.
      *
-     * @var string|int|null
+     * @var int|string|null
      */
     public $traceId;
 
     /**
-     * @param string                          $payload
-     * @param array<string, string|int|float> $headers
-     * @param DeliveryDestination             $destination
-     * @param string|int|null                 $traceId
-     * @param bool                            $persist
-     * @param bool                            $mandatory
-     * @param bool                            $immediate
-     * @param int|null                        $expiredAfter
+     * @psalm-param array<string, float|int|string> $headers
+     *
+     * @param string              $payload
+     * @param array               $headers
+     * @param DeliveryDestination $destination
+     * @param int|string|null     $traceId
+     * @param bool                $persist
+     * @param bool                $mandatory
+     * @param bool                $immediate
+     * @param int|null            $expiredAfter
      *
      * @return static
      */
@@ -105,20 +113,21 @@ class OutboundPackage
         bool $mandatory = false,
         bool $immediate = false,
         ?int $expiredAfter = null
-    ): self
-    {
+    ): self {
         return new self($payload, $headers, $destination, $traceId, $persist, $mandatory, $immediate, $expiredAfter);
     }
 
     /**
-     * @param string                          $payload
-     * @param array<string, string|int|float> $headers
-     * @param DeliveryDestination             $destination
-     * @param string|int|null                 $traceId
-     * @param bool                            $persist
-     * @param bool                            $mandatory
-     * @param bool                            $immediate
-     * @param int|null                        $expiredAfter
+     * @psalm-param array<string, float|int|string> $headers
+     *
+     * @param string              $payload
+     * @param array               $headers
+     * @param DeliveryDestination $destination
+     * @param int|string|null     $traceId
+     * @param bool                $persist
+     * @param bool                $mandatory
+     * @param bool                $immediate
+     * @param int|null            $expiredAfter
      */
     private function __construct(
         string $payload,
@@ -129,8 +138,7 @@ class OutboundPackage
         bool $mandatory = false,
         bool $immediate = false,
         ?int $expiredAfter = null
-    )
-    {
+    ) {
         $this->payload        = $payload;
         $this->headers        = $headers;
         $this->destination    = $destination;

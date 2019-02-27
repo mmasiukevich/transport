@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Common transport implementation interfaces
+ * Common transport implementation interfaces.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -13,11 +13,13 @@ declare(strict_types = 1);
 namespace ServiceBus\Transport\Common\Exceptions;
 
 /**
- * Incorrect connection settings for transport
+ * Incorrect connection settings for transport.
  */
 final class InvalidConnectionParameters extends \InvalidArgumentException implements TransportFail
 {
     /**
+     * @codeCoverageIgnore
+     *
      * @return self
      */
     public static function emptyDSN(): self
@@ -26,6 +28,8 @@ final class InvalidConnectionParameters extends \InvalidArgumentException implem
     }
 
     /**
+     * @codeCoverageIgnore
+     *
      * @param string $dsn
      *
      * @return self

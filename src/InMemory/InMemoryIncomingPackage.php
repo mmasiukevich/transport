@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Common transport implementation interfaces
+ * Common transport implementation interfaces.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -18,7 +18,9 @@ use ServiceBus\Transport\Common\DeliveryDestination;
 use ServiceBus\Transport\Common\Package\IncomingPackage;
 
 /**
+ * For tests only.
  *
+ * @codeCoverageIgnore
  */
 final class InMemoryIncomingPackage implements IncomingPackage
 {
@@ -29,6 +31,7 @@ final class InMemoryIncomingPackage implements IncomingPackage
 
     /**
      * @psalm-var array<string, string|int|float>
+     *
      * @var array
      */
     private $headers;
@@ -46,7 +49,7 @@ final class InMemoryIncomingPackage implements IncomingPackage
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function id(): string
     {
@@ -54,7 +57,7 @@ final class InMemoryIncomingPackage implements IncomingPackage
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function time(): float
     {
@@ -62,7 +65,7 @@ final class InMemoryIncomingPackage implements IncomingPackage
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function origin(): DeliveryDestination
     {
@@ -70,7 +73,7 @@ final class InMemoryIncomingPackage implements IncomingPackage
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function payload(): string
     {
@@ -78,7 +81,7 @@ final class InMemoryIncomingPackage implements IncomingPackage
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function headers(): array
     {
@@ -86,7 +89,7 @@ final class InMemoryIncomingPackage implements IncomingPackage
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function ack(): Promise
     {
@@ -94,7 +97,7 @@ final class InMemoryIncomingPackage implements IncomingPackage
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function nack(bool $requeue, ?string $withReason = null): Promise
     {
@@ -102,7 +105,7 @@ final class InMemoryIncomingPackage implements IncomingPackage
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function reject(bool $requeue, ?string $withReason = null): Promise
     {
@@ -110,7 +113,7 @@ final class InMemoryIncomingPackage implements IncomingPackage
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function traceId(): string
     {

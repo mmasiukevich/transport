@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Common transport implementation interfaces
+ * Common transport implementation interfaces.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -24,22 +24,21 @@ class OutboundPackageTest extends TestCase
     /**
      * @test
      *
-     * @return void
-     *
      * @throws \Throwable
+     *
+     * @return void
      */
     public function create(): void
     {
-        $destination = new class implements DeliveryDestination
+        $destination = new class() implements DeliveryDestination
         {
-
         };
 
         $package = OutboundPackage::create('payloadData', ['key' => 'value'], $destination, 'traceId');
 
-        static::assertEquals('payloadData', $package->payload);
-        static::assertEquals(['key' => 'value'], $package->headers);
-        static::assertEquals($destination, $package->destination);
-        static::assertEquals('traceId', $package->traceId);
+        static::assertSame('payloadData', $package->payload);
+        static::assertSame(['key' => 'value'], $package->headers);
+        static::assertSame($destination, $package->destination);
+        static::assertSame('traceId', $package->traceId);
     }
 }
