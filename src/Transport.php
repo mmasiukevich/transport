@@ -57,7 +57,7 @@ interface Transport
     /**
      * Consume to queue.
      *
-     * @psalm-param callable(\ServiceBus\Transport\Common\Package\IncomingPackage):\Generator
+     * @psalm-param callable(\ServiceBus\Transport\Common\Package\IncomingPackage):\Generator $onMessage
      *
      * @param callable $onMessage
      * @param Queue ...$queues
