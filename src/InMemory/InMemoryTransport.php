@@ -13,7 +13,6 @@ declare(strict_types = 1);
 namespace ServiceBus\Transport\Common\InMemory;
 
 use function Amp\call;
-use Amp\Emitter;
 use Amp\Loop;
 use Amp\Promise;
 use Amp\Success;
@@ -34,13 +33,13 @@ use ServiceBus\Transport\Common\Transport;
 final class InMemoryTransport implements Transport
 {
     /**
-     * @var Emitter
+     * @var string|null
      */
-    private $emitter;
+    private $listenerId;
 
     public function __construct()
     {
-        $this->emitter = new Emitter();
+
     }
 
     /**
@@ -64,20 +63,25 @@ final class InMemoryTransport implements Transport
      *
      * {@inheritdoc}
      */
-    public function consume(Queue ...$queue): Promise
+    public function consume(callable $onMessage, Queue ... $queues): Promise
     {
-        $emitter = new Emitter();
-
         /** @psalm-suppress InvalidArgument Incorrect psalm unpack parameters (...$args) */
         return call(
-            function() use ($emitter): \Generator
+            function() use ($onMessage): void
             {
-                if (true === InMemoryMessageBus::instance()->has())
-                {
-                    yield $emitter->emit(InMemoryMessageBus::instance()->extract());
-                }
+                $this->listenerId = Loop::repeat(
+                    100,
+                    static function() use ($onMessage): \Generator
+                    {
+                        if(true === InMemoryMessageBus::instance()->has())
+                        {
+                            /** @var \Generator $generator */
+                            $generator = $onMessage(InMemoryMessageBus::instance()->extract());
 
-                return $emitter->iterate();
+                            yield from $generator;
+                        }
+                    }
+                );
             }
         );
     }
@@ -87,6 +91,11 @@ final class InMemoryTransport implements Transport
      */
     public function stop(): Promise
     {
+        if(null !== $this->listenerId)
+        {
+            Loop::cancel($this->listenerId);
+        }
+
         Loop::stop();
 
         return new Success();
@@ -97,7 +106,11 @@ final class InMemoryTransport implements Transport
      */
     public function send(OutboundPackage $outboundPackage): Promise
     {
-        return $this->emitter->emit(new InMemoryIncomingPackage($outboundPackage->payload, $outboundPackage->headers));
+        InMemoryMessageBus::instance()->add(
+            new InMemoryIncomingPackage($outboundPackage->payload, $outboundPackage->headers)
+        );
+
+        return new Success();
     }
 
     /**

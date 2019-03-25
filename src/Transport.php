@@ -57,13 +57,16 @@ interface Transport
     /**
      * Consume to queue.
      *
+     * @psalm-param callable(\ServiceBus\Transport\Common\Package\IncomingPackage):\Generator
+     *
+     * @param callable $onMessage
      * @param Queue ...$queues
      *
      * @throws \ServiceBus\Transport\Common\Exceptions\ConnectionFail Connection refused
      *
      * @return Promise<\Amp\Iterator<\ServiceBus\Transport\Common\Package\IncomingPackage>>
      */
-    public function consume(Queue ... $queues): Promise;
+    public function consume(callable $onMessage, Queue ... $queues): Promise;
 
     /**
      * Stop subscription.
