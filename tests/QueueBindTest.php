@@ -36,6 +36,11 @@ final class QueueBindTest extends TestCase
             {
                 return 'qwerty';
             }
+
+            public function toString(): string
+            {
+                return 'qwerty';
+            }
         };
 
         $bind = QueueBind::create($topic, 'key');

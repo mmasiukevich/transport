@@ -18,9 +18,18 @@ namespace ServiceBus\Transport\Common;
 interface Topic
 {
     /**
+     * @deprecated Will be removed in the next version (use toString() method)
+     *
      * Return topic name.
      *
      * @return string
      */
     public function __toString(): string;
+
+    /**
+     * Return topic name.
+     *
+     * @return string
+     */
+    public function toString(): string;
 }

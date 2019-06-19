@@ -36,6 +36,11 @@ final class TopicBindTest extends TestCase
             {
                 return 'qwerty';
             }
+
+            public function toString(): string
+            {
+                return 'qwerty';
+            }
         };
 
         $bind = TopicBind::create($topic, 'key');

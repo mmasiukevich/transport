@@ -91,6 +91,8 @@ class OutboundPackage
     public $traceId;
 
     /**
+     * @deprecated  Will be removed in the next version
+     *
      * @psalm-param array<string, float|int|string> $headers
      *
      * @param string              $payload
@@ -129,7 +131,7 @@ class OutboundPackage
      * @param bool                $immediate
      * @param int|null            $expiredAfter
      */
-    private function __construct(
+    public function __construct(
         string $payload,
         array $headers,
         DeliveryDestination $destination,
