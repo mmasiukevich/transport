@@ -18,15 +18,6 @@ namespace ServiceBus\Transport\Common;
 interface Queue
 {
     /**
-     * @deprecated Will be removed in the next version (use toString() method)
-     *
-     * Return queue name.
-     *
-     * @return string
-     */
-    public function __toString(): string;
-
-    /**
      * Return queue name.
      *
      * @return string
