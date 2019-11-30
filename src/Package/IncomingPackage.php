@@ -26,11 +26,6 @@ interface IncomingPackage
     public function id(): string;
 
     /**
-     * Receive Unix timestamp with microseconds (the time the message was received).
-     */
-    public function time(): float;
-
-    /**
      * The source from which the message was received.
      */
     public function origin(): DeliveryDestination;

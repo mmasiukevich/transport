@@ -34,7 +34,7 @@ class OutboundPackageTest extends TestCase
         {
         };
 
-        $package = OutboundPackage::create('payloadData', ['key' => 'value'], $destination, 'traceId');
+        $package = new OutboundPackage('payloadData', ['key' => 'value'], $destination, 'traceId');
 
         static::assertSame('payloadData', $package->payload);
         static::assertSame(['key' => 'value'], $package->headers);

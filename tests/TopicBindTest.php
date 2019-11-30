@@ -43,9 +43,9 @@ final class TopicBindTest extends TestCase
             }
         };
 
-        $bind = TopicBind::create($topic, 'key');
+        $bind = new TopicBind($topic, 'key');
 
-        static::assertSame('qwerty', (string) $bind->destinationTopic);
+        static::assertSame('qwerty', $bind->destinationTopic->toString());
         static::assertSame('key', $bind->routingKey);
     }
 }

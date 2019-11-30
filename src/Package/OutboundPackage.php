@@ -31,7 +31,9 @@ class OutboundPackage
      *
      * @psalm-var array<string, float|int|string>
      */
-    public array $headers;
+    public array
+
+ $headers;
 
     /**
      * Message destination.
