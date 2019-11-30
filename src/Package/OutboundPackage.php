@@ -17,71 +17,50 @@ use ServiceBus\Transport\Common\DeliveryDestination;
 /**
  * Outbound package.
  *
- * @property-read string              $payload
- * @property-read array               $headers
- * @property-read DeliveryDestination $destination
- * @property-read bool                $persistentFlag
- * @property-read bool                $mandatoryFlag
- * @property-read bool                $immediateFlag
- * @property-read int|null            $expiredAfter
- * @property-read int|string|null     $traceId
+ * @psalm-readonly
  */
 class OutboundPackage
 {
     /**
      * Message body.
-     *
-     * @var string
      */
-    public $payload;
+    public string $payload;
 
     /**
      * Message headers.
      *
      * @psalm-var array<string, float|int|string>
-     *
-     * @var array
      */
-    public $headers;
+    public array $headers;
 
     /**
      * Message destination.
-     *
-     * @var DeliveryDestination
      */
-    public $destination;
+    public DeliveryDestination $destination;
 
     /**
      * The message must be stored in the broker.
-     *
-     * @var bool
      */
-    public $persistentFlag = false;
+    public bool $persistentFlag = false;
 
     /**
      * This flag tells the server how to react if the message cannot be routed to a queue. If this flag is set, the
      * server will return an unroutable message with a Return method. If this flag is zero, the server silently drops
      * the message.
-     *
-     * @var bool
      */
-    public $mandatoryFlag = false;
+    public bool $mandatoryFlag = false;
 
     /**
      * This flag tells the server how to react if the message cannot be routed to a queue consumer immediately. If this
      * flag is set, the server will return an undeliverable message with a Return method. If this flag is zero, the
      * server will queue the message, but with no guarantee that it will ever be consumed.
-     *
-     * @var bool
      */
-    public $immediateFlag = false;
+    public bool $immediateFlag = false;
 
     /**
      * The message will be marked expired after N milliseconds.
-     *
-     * @var int|null
      */
-    public $expiredAfter;
+    public ?int $expiredAfter;
 
     /**
      * Trace operation id.
@@ -91,45 +70,9 @@ class OutboundPackage
     public $traceId;
 
     /**
-     * @deprecated  Will be removed in the next version
-     *
      * @psalm-param array<string, float|int|string> $headers
      *
-     * @param string              $payload
-     * @param array               $headers
-     * @param DeliveryDestination $destination
      * @param int|string|null     $traceId
-     * @param bool                $persist
-     * @param bool                $mandatory
-     * @param bool                $immediate
-     * @param int|null            $expiredAfter
-     *
-     * @return static
-     */
-    public static function create(
-        string $payload,
-        array $headers,
-        DeliveryDestination $destination,
-        $traceId,
-        bool $persist = false,
-        bool $mandatory = false,
-        bool $immediate = false,
-        ?int $expiredAfter = null
-    ): self {
-        return new self($payload, $headers, $destination, $traceId, $persist, $mandatory, $immediate, $expiredAfter);
-    }
-
-    /**
-     * @psalm-param array<string, float|int|string> $headers
-     *
-     * @param string              $payload
-     * @param array               $headers
-     * @param DeliveryDestination $destination
-     * @param int|string|null     $traceId
-     * @param bool                $persist
-     * @param bool                $mandatory
-     * @param bool                $immediate
-     * @param int|null            $expiredAfter
      */
     public function __construct(
         string $payload,

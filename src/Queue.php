@@ -19,8 +19,6 @@ interface Queue
 {
     /**
      * Return queue name.
-     *
-     * @return string
      */
     public function toString(): string;
 }

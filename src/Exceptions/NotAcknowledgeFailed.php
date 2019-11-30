@@ -19,10 +19,6 @@ final class NotAcknowledgeFailed extends \RuntimeException implements TransportF
 {
     /**
      * @codeCoverageIgnore
-     *
-     * @param \Throwable $throwable
-     *
-     * @return self
      */
     public static function fromThrowable(\Throwable $throwable): self
     {

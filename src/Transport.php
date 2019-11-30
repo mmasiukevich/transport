@@ -28,9 +28,6 @@ interface Transport
      * Create topic and bind them
      * If the topic to which we binds does not exist, it will be created.
      *
-     * @param Topic     $topic
-     * @param TopicBind ...$binds
-     *
      * @throws \ServiceBus\Transport\Common\Exceptions\ConnectionFail Connection refused
      * @throws \ServiceBus\Transport\Common\Exceptions\CreateTopicFailed Failed to create topic
      * @throws \ServiceBus\Transport\Common\Exceptions\BindFailed Failed topic bind
@@ -42,9 +39,6 @@ interface Transport
     /**
      * Create queue and bind to topic(s)
      * If the topic to which we binds does not exist, it will be created.
-     *
-     * @param Queue     $queue
-     * @param QueueBind ...$binds
      *
      * @throws \ServiceBus\Transport\Common\Exceptions\ConnectionFail Connection refused
      * @throws \ServiceBus\Transport\Common\Exceptions\CreateQueueFailed Failed to create queue
@@ -58,9 +52,6 @@ interface Transport
      * Consume to queue.
      *
      * @psalm-param callable(\ServiceBus\Transport\Common\Package\IncomingPackage):\Generator $onMessage
-     *
-     * @param callable $onMessage
-     * @param Queue ...$queues
      *
      * @throws \ServiceBus\Transport\Common\Exceptions\ConnectionFail Connection refused
      *
@@ -77,8 +68,6 @@ interface Transport
 
     /**
      * Send message to broker.
-     *
-     * @param OutboundPackage $outboundPackage
      *
      * @throws \ServiceBus\Transport\Common\Exceptions\SendMessageFailed Failed to send message
      *

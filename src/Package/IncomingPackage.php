@@ -22,29 +22,21 @@ interface IncomingPackage
 {
     /**
      * Receive package id.
-     *
-     * @return string
      */
     public function id(): string;
 
     /**
      * Receive Unix timestamp with microseconds (the time the message was received).
-     *
-     * @return float
      */
     public function time(): float;
 
     /**
      * The source from which the message was received.
-     *
-     * @return DeliveryDestination
      */
     public function origin(): DeliveryDestination;
 
     /**
      * Receive message body.
-     *
-     * @return string
      */
     public function payload(): string;
 
@@ -52,8 +44,6 @@ interface IncomingPackage
      * Receive message headers bag.
      *
      * @psalm-return array<string, string|int|float>
-     *
-     * @return array
      */
     public function headers(): array;
 

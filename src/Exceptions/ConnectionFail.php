@@ -19,10 +19,6 @@ final class ConnectionFail extends \RuntimeException
 {
     /**
      * @codeCoverageIgnore
-     *
-     * @param \Throwable $throwable
-     *
-     * @return self
      */
     public static function fromThrowable(\Throwable $throwable): self
     {

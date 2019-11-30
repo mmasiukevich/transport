@@ -15,41 +15,21 @@ namespace ServiceBus\Transport\Common;
 /**
  * Binding the queue to the topic.
  *
- * @property-read Topic       $destinationTopic
- * @property-read string|null $routingKey
+ * @psalm-readonly
  */
 class QueueBind
 {
     /**
      * The topic to which the binding is going.
-     *
-     * @var Topic
      */
-    public $destinationTopic;
+    public Topic $destinationTopic;
 
     /**
      * Binding Key.
-     *
-     * @var string|null
      */
-    public $routingKey;
+    public ?string $routingKey;
 
-    /**
-     * @param Topic       $destinationTopic
-     * @param string|null $routingKey
-     *
-     * @return static
-     */
-    final public static function create(Topic $destinationTopic, ?string $routingKey = null): self
-    {
-        return new self($destinationTopic, $routingKey);
-    }
-
-    /**
-     * @param Topic       $destinationTopic The topic to which the binding is going
-     * @param string|null $routingKey       Binding Key
-     */
-    private function __construct(Topic $destinationTopic, ?string $routingKey = null)
+    public function __construct(Topic $destinationTopic, ?string $routingKey = null)
     {
         $this->destinationTopic = $destinationTopic;
         $this->routingKey       = $routingKey;

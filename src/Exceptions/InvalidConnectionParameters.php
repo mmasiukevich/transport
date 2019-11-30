@@ -19,8 +19,6 @@ final class InvalidConnectionParameters extends \InvalidArgumentException implem
 {
     /**
      * @codeCoverageIgnore
-     *
-     * @return self
      */
     public static function emptyDSN(): self
     {
@@ -29,10 +27,6 @@ final class InvalidConnectionParameters extends \InvalidArgumentException implem
 
     /**
      * @codeCoverageIgnore
-     *
-     * @param string $dsn
-     *
-     * @return self
      */
     public static function incorrectDSN(string $dsn): self
     {

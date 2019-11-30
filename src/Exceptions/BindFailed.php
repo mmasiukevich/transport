@@ -19,10 +19,6 @@ final class BindFailed extends \RuntimeException implements TransportFail
 {
     /**
      * @codeCoverageIgnore
-     *
-     * @param \Throwable $throwable
-     *
-     * @return self
      */
     public static function fromThrowable(\Throwable $throwable): self
     {
