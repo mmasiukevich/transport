@@ -31,9 +31,7 @@ class OutboundPackage
      *
      * @psalm-var array<string, float|int|string>
      */
-    public array
-
- $headers;
+    public array $headers;
 
     /**
      * Message destination.
@@ -62,7 +60,7 @@ class OutboundPackage
     /**
      * The message will be marked expired after N milliseconds.
      */
-    public ?int $expiredAfter;
+    public ?int $expiredAfter = null;
 
     /**
      * Trace operation id.

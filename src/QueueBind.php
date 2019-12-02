@@ -27,7 +27,7 @@ class QueueBind
     /**
      * Binding Key.
      */
-    public ?string $routingKey;
+    public ?string $routingKey = null;
 
     public function __construct(Topic $destinationTopic, ?string $routingKey = null)
     {
