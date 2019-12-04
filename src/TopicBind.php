@@ -21,13 +21,17 @@ class TopicBind
 {
     /**
      * The topic to which the binding is going.
+     *
+     * @var Topic
      */
-    public Topic $destinationTopic;
+    public $destinationTopic;
 
     /**
      * Binding Key.
+     *
+     * @var string|null
      */
-    public ?string $routingKey = null;
+    public $routingKey = null;
 
     public function __construct(Topic $destinationTopic, ?string $routingKey = null)
     {
