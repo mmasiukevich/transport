@@ -28,6 +28,8 @@ interface Transport
      * Create topic and bind them
      * If the topic to which we binds does not exist, it will be created.
      *
+     * @return Promise<null>
+     *
      * @throws \ServiceBus\Transport\Common\Exceptions\ConnectionFail Connection refused
      * @throws \ServiceBus\Transport\Common\Exceptions\CreateTopicFailed Failed to create topic
      * @throws \ServiceBus\Transport\Common\Exceptions\BindFailed Failed topic bind
@@ -38,6 +40,8 @@ interface Transport
      * Create queue and bind to topic(s)
      * If the topic to which we binds does not exist, it will be created.
      *
+     * @return Promise<null>
+     *
      * @throws \ServiceBus\Transport\Common\Exceptions\ConnectionFail Connection refused
      * @throws \ServiceBus\Transport\Common\Exceptions\CreateQueueFailed Failed to create queue
      * @throws \ServiceBus\Transport\Common\Exceptions\BindFailed Failed queue bind
@@ -47,9 +51,9 @@ interface Transport
     /**
      * Consume to queue.
      *
-     * Returns \Amp\Iterator<\ServiceBus\Transport\Common\Package\IncomingPackage>
+     * @return Promise<\Amp\Iterator<\ServiceBus\Transport\Common\Package\IncomingPackage>>
      *
-     * @psalm-param callable(\ServiceBus\Transport\Common\Package\IncomingPackage):\Generator $onMessage
+     * @psalm-param callable(\ServiceBus\Transport\Common\Package\IncomingPackage):\Generator<null> $onMessage
      *
      * @throws \ServiceBus\Transport\Common\Exceptions\ConnectionFail Connection refused
      */
@@ -57,11 +61,15 @@ interface Transport
 
     /**
      * Stop subscription.
+     *
+     * @return Promise<null>
      */
     public function stop(): Promise;
 
     /**
      * Send message to broker.
+     *
+     * @return Promise<null>
      *
      * @throws \ServiceBus\Transport\Common\Exceptions\SendMessageFailed Failed to send message
      */
@@ -70,12 +78,16 @@ interface Transport
     /**
      * Connect to broker.
      *
+     * @return Promise<null>
+     *
      * @throws \ServiceBus\Transport\Common\Exceptions\ConnectionFail Connection refused
      */
     public function connect(): Promise;
 
     /**
      * Close connection.
+     *
+     * @return Promise<null>
      */
     public function disconnect(): Promise;
 }

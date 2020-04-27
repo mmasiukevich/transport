@@ -45,6 +45,8 @@ interface IncomingPackage
     /**
      * Acks given message.
      *
+     * @return Promise<null>
+     *
      * @throws \ServiceBus\Transport\Common\Exceptions\AcknowledgeFailed
      */
     public function ack(): Promise;
@@ -55,6 +57,8 @@ interface IncomingPackage
      * @param bool        $requeue    Send back to the queue
      * @param string|null $withReason Reason for refusal
      *
+     * @return Promise<null>
+     *
      * @throws \ServiceBus\Transport\Common\Exceptions\NotAcknowledgeFailed
      */
     public function nack(bool $requeue, ?string $withReason = null): Promise;
@@ -64,6 +68,8 @@ interface IncomingPackage
      *
      * @param bool        $requeue    Send back to the queue
      * @param string|null $withReason Reason for refusal
+     *
+     * @return Promise<null>
      *
      * @throws \ServiceBus\Transport\Common\Exceptions\RejectFailed
      */
